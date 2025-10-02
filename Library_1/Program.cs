@@ -101,7 +101,7 @@
                     ShowBooks();
                     break;
                 case 2:
-                    // Låna Bok
+                    BorrowBook();
                     break;
                 case 3:
                     //Lämna till bok
@@ -133,7 +133,7 @@
             ShowBooks();
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du velat låna?");
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 5) ;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 5)
             {
                 Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
             }
@@ -141,7 +141,9 @@
             switch (choice)
             {
                 case 1:
-                    nrTitles[0] = -1;
+                   
+                    nrTitles[0] = nrTitles[0] -1 ;
+
                     break;
 
             }
