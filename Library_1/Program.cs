@@ -11,6 +11,7 @@
             {
                 return;
             }
+            Menu();
         }
 
 
@@ -74,6 +75,36 @@
                 }
             }
             return runProgram;
+        }
+        static void Menu()
+        {
+            int choice;
+            Console.WriteLine("Bibloteks meny");
+            Console.WriteLine("Du får nu 5 valmöjligheter. Välj med siffrorna 1 till 5");
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 5)
+            {
+                Console.WriteLine("Du måste välja mellan valen 1 till 5");
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    //Visa böcker
+                    break;
+                case 2:
+                    // Låna Bok
+                    break;
+                case 3:
+                    //Lämna till bok
+                    break;
+                case 4:
+                    //Mina lån
+                    break;
+                case 5:
+                    //Logga ut
+                    break;
+            }
+
         }
     }
 }
