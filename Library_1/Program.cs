@@ -82,7 +82,14 @@
             int choice;
             Console.Clear();
             Console.WriteLine("Bibloteks meny");
+            Console.WriteLine("_______________");
             Console.WriteLine("Du får nu 5 valmöjligheter. Välj med siffrorna 1 till 5");
+            Console.WriteLine();
+            Console.WriteLine("1: Visa böcker.");
+            Console.WriteLine("2: Låna böcker.");
+            Console.WriteLine("3: Lämna tillbaka böcker.");
+            Console.WriteLine("4: Mina lån.");
+            Console.WriteLine("5: Logga ut.");
             while (!int.TryParse(Console.ReadLine(), out choice) || choice > 5)
             {
                 Console.WriteLine("Du måste välja mellan valen 1 till 5");
