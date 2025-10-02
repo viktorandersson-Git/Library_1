@@ -114,7 +114,7 @@
                     //Lämna till bok
                     break;
                 case 4:
-                    //Mina lån
+                    UsersBooks();
                     break;
                 case 5:
                     currentUser = -1;
@@ -152,15 +152,36 @@
             else
             {
                 nrTitles[choice - 1]--;
+
+                for (int i = 0; i < userLoan.GetLength(1); i++)
+                {
+                    if (userLoan[currentUser, i] == 0)
+                    {
+                        userLoan[currentUser, i] = choice;
+                        Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
+                        break;
+                    }
+                }
             }
-
-
             return choice;
         }
 
         static void UsersBooks()
         {
+            int counter = 1;
+            for (int i = 0; i < userLoan.GetLength((1)); i++)
+            {
 
+                int bookIndex = userLoan[currentUser, i];
+                if (bookIndex != 0)
+                {
+                    Console.WriteLine($" {titles[bookIndex - 1]}");
+                    counter++;
+                }
+            }
+            Console.ReadKey();
         }
     }
 }
+
+        
