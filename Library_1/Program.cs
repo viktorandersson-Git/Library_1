@@ -116,7 +116,8 @@
                     //Mina lån
                     break;
                 case 5:
-                    
+                    currentUser = -1;
+                    Logattampts();
                     break;
             }
         }
