@@ -70,7 +70,6 @@
                 int userIndex = Login(userNameInput, userPasswordInput);
                 if (userIndex != -1)
                 {
-                    currentUser = userIndex;
                     correctLogin = true;
                 }
 
@@ -117,7 +116,7 @@
                     //Mina lån
                     break;
                 case 5:
-                    //Logga ut
+                    
                     break;
             }
         }
