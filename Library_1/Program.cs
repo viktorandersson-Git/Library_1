@@ -122,7 +122,7 @@
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
-                Console.WriteLine($"Titel :{titles[i]}, exemplar {nrTitles[i]}");
+                Console.WriteLine($"{i+1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
             }
         }
         static int BorrowBook()
@@ -150,6 +150,50 @@
                     {
                         nrTitles[0] = nrTitles[0] - 1;
                         Console.WriteLine($"Du har nu lånat{titles[0]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 2:
+                    if (nrTitles[1] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[1] = nrTitles[1] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[0]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 3:
+                    if (nrTitles[2] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[2] = nrTitles[2] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[2]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 4:
+                    if (nrTitles[3] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[3] = nrTitles[3] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[3]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 5:
+                    if (nrTitles[4] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[4] = nrTitles[4] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[4]} "); // *Kanske addera hur lång tid man har på sig
                     }
                     break;
 
