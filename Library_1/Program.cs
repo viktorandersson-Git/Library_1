@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        static string[] books = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
         static void Main(string[] args)
         {
             Welcome();
@@ -44,9 +45,8 @@
                 }
             }
             return correctLogin;
-
-          
         }
+
         static bool Logattampts()
         {
             int logCount = 0;
@@ -104,6 +104,9 @@
                     //Logga ut
                     break;
             }
+        }
+        static void ShowBooks()
+        {
 
         }
     }
