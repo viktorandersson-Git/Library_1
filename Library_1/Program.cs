@@ -141,9 +141,15 @@
             switch (choice)
             {
                 case 1:
-                   
-                    nrTitles[0] = nrTitles[0] -1 ;
-
+                    if (nrTitles[0] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[0] = nrTitles[0] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[0]} "); // *Kanske addera hur lång tid man har på sig
+                    }
                     break;
 
             }
