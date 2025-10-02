@@ -2,6 +2,8 @@
 {
     internal class Program
     {
+        static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
+        static int[] nrTitles = [3, 2, 4, 2, 1];
         static void Main(string[] args)
         {
             Welcome();
@@ -44,9 +46,8 @@
                 }
             }
             return correctLogin;
-
-          
         }
+
         static bool Logattampts()
         {
             int logCount = 0;
@@ -74,11 +75,12 @@
                     logCount++;
                 }
             }
-            return runProgram;
+            return correctLogin;
         }
         static void Menu()
         {
             int choice;
+            Console.Clear();
             Console.WriteLine("Bibloteks meny");
             Console.WriteLine("Du får nu 5 valmöjligheter. Välj med siffrorna 1 till 5");
             while (!int.TryParse(Console.ReadLine(), out choice) || choice > 5)
@@ -89,7 +91,7 @@
             switch (choice)
             {
                 case 1:
-                    //Visa böcker
+                    ShowBooks();
                     break;
                 case 2:
                     // Låna Bok
@@ -104,7 +106,15 @@
                     //Logga ut
                     break;
             }
-
+        }
+        static void ShowBooks()
+        {
+            Console.WriteLine("Vi har dessa böcker att låna idag: ");
+            Console.WriteLine("__________________________________");
+            for (int i = 0; i < titles.Length; i++)
+            {
+                Console.WriteLine($"Titel :{titles[i]}, exemplar {nrTitles[i]}");
+            }
         }
     }
 }
