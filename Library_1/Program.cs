@@ -138,7 +138,13 @@
                 Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
             }
 
-            
+            switch (choice)
+            {
+                case 1:
+                    nrTitles[0] = -1;
+                    break;
+
+            }
 
             return choice;
         }
