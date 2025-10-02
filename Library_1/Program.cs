@@ -3,6 +3,7 @@
     internal class Program
     {
         static string[] books = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
+        static int[] nrBooks = [3, 2, 4, 2, 1];
         static void Main(string[] args)
         {
             Welcome();
