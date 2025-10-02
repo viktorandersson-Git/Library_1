@@ -40,7 +40,7 @@
 
         static int Login(string userNameInput, string userPasswordInput)
         {
-            bool correctLogin = false;
+            
 
 
             for (int i = 0; i < userName.Length; i++)
@@ -60,7 +60,7 @@
             bool correctLogin = false;
             string userNameInput;
             string userPasswordInput;
-            bool runProgram = false;
+            
             while (!correctLogin && logCount < 3)
             {
                 Console.WriteLine("Användarnamn: ");
