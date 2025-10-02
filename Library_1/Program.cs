@@ -15,7 +15,10 @@
             {
                 return;
             }
-            Menu();
+            while (runProgram) 
+            {
+                Menu();
+            } 
         }
 
 
