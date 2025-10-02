@@ -2,6 +2,8 @@
 {
     internal class Program
     {
+        static string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
+        static string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
         static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
         static int[] nrTitles = [3, 2, 4, 2, 1];
         static void Main(string[] args)
@@ -34,8 +36,7 @@
         static bool Login(string userNameInput, string userPasswordInput)
         {
             bool correctLogin = false;
-            string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
-            string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
+
 
             for (int i = 0; i < userName.Length; i++)
             {
