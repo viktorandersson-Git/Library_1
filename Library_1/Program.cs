@@ -47,6 +47,7 @@
             {
                 if (userName[i] == userNameInput && userPassword[i] == userPasswordInput)
                 {
+                    currentUser = i;
                     return i;
                 }
             }
