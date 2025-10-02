@@ -2,6 +2,8 @@
 {
     internal class Program
     {
+        static string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
+        static string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
         static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
         static int[] nrTitles = [3, 2, 4, 2, 1];
         static void Main(string[] args)
@@ -34,8 +36,7 @@
         static bool Login(string userNameInput, string userPasswordInput)
         {
             bool correctLogin = false;
-            string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
-            string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
+
 
             for (int i = 0; i < userName.Length; i++)
             {
@@ -82,7 +83,14 @@
             int choice;
             Console.Clear();
             Console.WriteLine("Bibloteks meny");
+            Console.WriteLine("_______________");
             Console.WriteLine("Du får nu 5 valmöjligheter. Välj med siffrorna 1 till 5");
+            Console.WriteLine();
+            Console.WriteLine("1: Visa böcker.");
+            Console.WriteLine("2: Låna böcker.");
+            Console.WriteLine("3: Lämna tillbaka böcker.");
+            Console.WriteLine("4: Mina lån.");
+            Console.WriteLine("5: Logga ut.");
             while (!int.TryParse(Console.ReadLine(), out choice) || choice > 5)
             {
                 Console.WriteLine("Du måste välja mellan valen 1 till 5");
@@ -94,7 +102,7 @@
                     ShowBooks();
                     break;
                 case 2:
-                    // Låna Bok
+                    BorrowBook();
                     break;
                 case 3:
                     //Lämna till bok
@@ -109,12 +117,89 @@
         }
         static void ShowBooks()
         {
+            Console.Clear();
             Console.WriteLine("Vi har dessa böcker att låna idag: ");
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
-                Console.WriteLine($"Titel :{titles[i]}, exemplar {nrTitles[i]}");
+                Console.WriteLine($"{i+1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
             }
+        }
+        static int BorrowBook()
+        {
+            int choice;
+            Console.WriteLine("Låna bok");
+            Console.WriteLine("________");
+            Console.WriteLine("");
+            ShowBooks();
+            Console.WriteLine();
+            Console.WriteLine("Vilken bok hade du velat låna?");
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 5)
+            {
+                Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    if (nrTitles[0] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[0] = nrTitles[0] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[0]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 2:
+                    if (nrTitles[1] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[1] = nrTitles[1] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[0]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 3:
+                    if (nrTitles[2] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[2] = nrTitles[2] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[2]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 4:
+                    if (nrTitles[3] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[3] = nrTitles[3] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[3]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+                case 5:
+                    if (nrTitles[4] == 0)
+                    {
+                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
+                    }
+                    else
+                    {
+                        nrTitles[4] = nrTitles[4] - 1;
+                        Console.WriteLine($"Du har nu lånat{titles[4]} "); // *Kanske addera hur lång tid man har på sig
+                    }
+                    break;
+
+            }
+
+            return choice;
         }
     }
 }
