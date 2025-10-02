@@ -21,5 +21,22 @@
             Console.WriteLine("_______________________________:");
             Console.WriteLine();
         }
+
+        static bool Login(string userNameInput, string userPasswordInput)
+        {
+            bool correctLogin = false;
+            string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
+            string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
+
+            for (int i = 0; i < userName.Length; i++)
+            {
+                if (userName[i] == userNameInput && userPassword[i] == userPasswordInput)
+                {
+                    correctLogin = true;
+                    break;
+                }
+            }
+            return correctLogin;
+        }
     }
 }
