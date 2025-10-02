@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            
+
         }
 
 
@@ -37,6 +37,37 @@
                 }
             }
             return correctLogin;
+
+          
+        }
+        static bool Logattampts()
+        {
+            int logCount = 0;
+            bool correctLogin = false;
+            string userNameInput;
+            string userPasswordInput;
+            bool runProgram = false;
+            while (!correctLogin && logCount < 3)
+            {
+                Console.WriteLine("Användarnamn: ");
+                userNameInput = Console.ReadLine();
+                Console.WriteLine("Lösenord: ");
+                userPasswordInput = Console.ReadLine();
+                correctLogin = Login(userNameInput, userPasswordInput);
+                if (correctLogin)
+                {
+                    break;
+                }
+
+                if (!correctLogin)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Fel användarnamn eller lösenord, försök igen.");
+                    Console.WriteLine($"försök {logCount + 1} av 3");
+                    logCount++;
+                }
+            }
+            return runProgram;
         }
     }
 }
