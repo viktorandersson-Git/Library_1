@@ -5,7 +5,7 @@
         static string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
         static string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
         static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
-        static int[] nrTitles = [3, 2, 4, 2, 1];
+        static int[] nrTitles = [3, 2, 4, 0, 1];
         static void Main(string[] args)
         {
             Welcome();
@@ -200,6 +200,11 @@
             }
 
             return choice;
+        }
+
+        static void UsersBooks()
+        {
+
         }
     }
 }
