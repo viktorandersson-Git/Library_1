@@ -4,7 +4,13 @@
     {
         static void Main(string[] args)
         {
+            Welcome();
 
+            bool runProgram = Logattampts();
+            if (!runProgram)
+            {
+                return;
+            }
         }
 
 
