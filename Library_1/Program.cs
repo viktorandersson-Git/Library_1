@@ -116,12 +116,31 @@
         }
         static void ShowBooks()
         {
+            Console.Clear();
             Console.WriteLine("Vi har dessa böcker att låna idag: ");
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
                 Console.WriteLine($"Titel :{titles[i]}, exemplar {nrTitles[i]}");
             }
+        }
+        static int BorrowBook()
+        {
+            int choice;
+            Console.WriteLine("Låna bok");
+            Console.WriteLine("________");
+            Console.WriteLine("");
+            ShowBooks();
+            Console.WriteLine();
+            Console.WriteLine("Vilken bok hade du velat låna?");
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 5) ;
+            {
+                Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
+            }
+
+            
+
+            return choice;
         }
     }
 }
