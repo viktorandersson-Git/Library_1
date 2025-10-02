@@ -7,6 +7,7 @@
         static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
         static int[] nrTitles = [3, 2, 4, 0, 1];
         static int[,] userLoan = new int[5, 5];
+        static int currentUser = -1;
         static void Main(string[] args)
         {
             Welcome();
@@ -37,7 +38,7 @@
             Console.WriteLine();
         }
 
-        static bool Login(string userNameInput, string userPasswordInput)
+        static int Login(string userNameInput, string userPasswordInput)
         {
             bool correctLogin = false;
 
@@ -46,11 +47,10 @@
             {
                 if (userName[i] == userNameInput && userPassword[i] == userPasswordInput)
                 {
-                    correctLogin = true;
-                    break;
+                    return i;
                 }
             }
-            return correctLogin;
+            return -1;
         }
 
         static bool Logattampts()
@@ -66,10 +66,12 @@
                 userNameInput = Console.ReadLine();
                 Console.WriteLine("Lösenord: ");
                 userPasswordInput = Console.ReadLine();
-                correctLogin = Login(userNameInput, userPasswordInput);
-                if (correctLogin)
+
+                int userIndex = Login(userNameInput, userPasswordInput);
+                if (userIndex != -1)
                 {
-                    break;
+                    currentUser = userIndex;
+                    correctLogin = true;
                 }
 
                 if (!correctLogin)
@@ -150,7 +152,7 @@
             {
                 nrTitles[choice - 1]--;
             }
-              
+
 
             return choice;
         }
