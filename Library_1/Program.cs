@@ -5,7 +5,9 @@
         static string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
         static string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
         static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
-        static int[] nrTitles = [3, 2, 4, 2, 1];
+        static int[] nrTitles = [3, 2, 4, 0, 1];
+        static int[,] userLoan = new int[5, 5];
+        static int currentUser = -1;
         static void Main(string[] args)
         {
             Welcome();
@@ -15,7 +17,10 @@
             {
                 return;
             }
-            Menu();
+            while (runProgram)
+            {
+                Menu();
+            }
         }
 
 
@@ -33,7 +38,7 @@
             Console.WriteLine();
         }
 
-        static bool Login(string userNameInput, string userPasswordInput)
+        static int Login(string userNameInput, string userPasswordInput)
         {
             bool correctLogin = false;
 
@@ -42,11 +47,11 @@
             {
                 if (userName[i] == userNameInput && userPassword[i] == userPasswordInput)
                 {
-                    correctLogin = true;
-                    break;
+                    currentUser = i;
+                    return i;
                 }
             }
-            return correctLogin;
+            return -1;
         }
 
         static bool Logattampts()
@@ -62,10 +67,11 @@
                 userNameInput = Console.ReadLine();
                 Console.WriteLine("Lösenord: ");
                 userPasswordInput = Console.ReadLine();
-                correctLogin = Login(userNameInput, userPasswordInput);
-                if (correctLogin)
+
+                int userIndex = Login(userNameInput, userPasswordInput);
+                if (userIndex != -1)
                 {
-                    break;
+                    correctLogin = true;
                 }
 
                 if (!correctLogin)
@@ -108,10 +114,11 @@
                     //Lämna till bok
                     break;
                 case 4:
-                    //Mina lån
+                    UsersBooks();
                     break;
                 case 5:
-                    //Logga ut
+                    currentUser = -1;
+                    Logattampts();
                     break;
             }
         }
@@ -122,7 +129,7 @@
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
-                Console.WriteLine($"{i+1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
+                Console.WriteLine($"{i + 1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
             }
         }
         static int BorrowBook()
@@ -138,68 +145,43 @@
             {
                 Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
             }
-
-            switch (choice)
+            if (nrTitles[choice - 1] == 0)
             {
-                case 1:
-                    if (nrTitles[0] == 0)
-                    {
-                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
-                    }
-                    else
-                    {
-                        nrTitles[0] = nrTitles[0] - 1;
-                        Console.WriteLine($"Du har nu lånat{titles[0]} "); // *Kanske addera hur lång tid man har på sig
-                    }
-                    break;
-                case 2:
-                    if (nrTitles[1] == 0)
-                    {
-                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
-                    }
-                    else
-                    {
-                        nrTitles[1] = nrTitles[1] - 1;
-                        Console.WriteLine($"Du har nu lånat{titles[0]} "); // *Kanske addera hur lång tid man har på sig
-                    }
-                    break;
-                case 3:
-                    if (nrTitles[2] == 0)
-                    {
-                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
-                    }
-                    else
-                    {
-                        nrTitles[2] = nrTitles[2] - 1;
-                        Console.WriteLine($"Du har nu lånat{titles[2]} "); // *Kanske addera hur lång tid man har på sig
-                    }
-                    break;
-                case 4:
-                    if (nrTitles[3] == 0)
-                    {
-                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
-                    }
-                    else
-                    {
-                        nrTitles[3] = nrTitles[3] - 1;
-                        Console.WriteLine($"Du har nu lånat{titles[3]} "); // *Kanske addera hur lång tid man har på sig
-                    }
-                    break;
-                case 5:
-                    if (nrTitles[4] == 0)
-                    {
-                        Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
-                    }
-                    else
-                    {
-                        nrTitles[4] = nrTitles[4] - 1;
-                        Console.WriteLine($"Du har nu lånat{titles[4]} "); // *Kanske addera hur lång tid man har på sig
-                    }
-                    break;
-
+                Console.WriteLine("Denna boken har inga exemplar att låna ut just nu. ");
             }
+            else
+            {
+                nrTitles[choice - 1]--;
 
+                for (int i = 0; i < userLoan.GetLength(1); i++)
+                {
+                    if (userLoan[currentUser, i] == 0)
+                    {
+                        userLoan[currentUser, i] = choice;
+                        Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
+                        break;
+                    }
+                }
+            }
             return choice;
+        }
+
+        static void UsersBooks()
+        {
+            int counter = 1;
+            for (int i = 0; i < userLoan.GetLength((1)); i++)
+            {
+
+                int bookIndex = userLoan[currentUser, i];
+                if (bookIndex != 0)
+                {
+                    Console.WriteLine($" {titles[bookIndex - 1]}");
+                    counter++;
+                }
+            }
+            Console.ReadKey();
         }
     }
 }
+
+        
