@@ -2,8 +2,8 @@
 {
     internal class Program
     {
-        static string[] books = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
-        static int[] nrBooks = [3, 2, 4, 2, 1];
+        static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
+        static int[] nrTitles = [3, 2, 4, 2, 1];
         static void Main(string[] args)
         {
             Welcome();
@@ -108,7 +108,10 @@
         }
         static void ShowBooks()
         {
-
+            for (int i = 0; i < titles.Length; i++)
+            {
+                Console.WriteLine($"{titles[i]} {nrTitles[i]}");
+            }
         }
     }
 }
