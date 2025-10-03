@@ -161,8 +161,7 @@
             else
             {
                 Console.Clear();
-                // Takes away one example of title . 
-                nrTitles[choice - 1]--;
+             
 
                 // Finding an free space on the user to put the borrowed book. 
                 for (int i = 0; i < userLoan.GetLength(1); i++)
@@ -174,6 +173,8 @@
                         Console.WriteLine();
                         Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
                         Console.ReadKey();
+                        // Takes away one example of title . 
+                        nrTitles[choice - 1]--;
                         break;
                     }
                 }
@@ -186,14 +187,12 @@
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
-
                 int bookIndex = userLoan[currentUser, i];
                 if (bookIndex != 0)
                 {
                     Console.WriteLine($"{counter}: {titles[bookIndex - 1]}");
                     counter++;
                 }
-
             }
             
                 Console.ReadKey();
