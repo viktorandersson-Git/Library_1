@@ -4,7 +4,7 @@
     {
         static string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
         static string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
-        static string[] titles = ["Harry potter och det vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
+        static string[] titles = ["Harry potter och de vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
         static int[] nrTitles = [3, 2, 4, 0, 1];
         static int[,] userLoan = new int[5, 5];
         static int currentUser = -1;
@@ -131,7 +131,7 @@
                 Console.WriteLine($"{i + 1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
             }
         }
-        static int BorrowBook()
+        static void BorrowBook()
         {
             int choice;
             Console.WriteLine("Låna bok");
@@ -144,6 +144,7 @@
             {
                 Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
             }
+            // if the book has no examples left.
             if (nrTitles[choice - 1] == 0)
             {
                 Console.Clear();
@@ -155,8 +156,11 @@
             }
             else
             {
+                Console.Clear();
+                // Takes away one example of title . 
                 nrTitles[choice - 1]--;
 
+                // Finding an free space on the user to put the borrowed book. 
                 for (int i = 0; i < userLoan.GetLength(1); i++)
                 {
                     if (userLoan[currentUser, i] == 0)
@@ -170,11 +174,11 @@
                     }
                 }
             }
-            return choice;
         }
 
         static void UsersBooks()
         {
+            Console.Clear();
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength((1)); i++)
             {
@@ -182,7 +186,7 @@
                 int bookIndex = userLoan[currentUser, i];
                 if (bookIndex != 0)
                 {
-                    Console.WriteLine($" {titles[bookIndex - 1]}");
+                    Console.WriteLine($"{counter}: {titles[bookIndex - 1]}");
                     counter++;
                 }
             }
