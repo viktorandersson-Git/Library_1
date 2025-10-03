@@ -24,7 +24,6 @@
         }
 
 
-
         static void Welcome()
         {
             Console.WriteLine("Välkommen till ditt biblotek!");
@@ -40,9 +39,6 @@
 
         static int Login(string userNameInput, string userPasswordInput)
         {
-            
-
-
             for (int i = 0; i < userName.Length; i++)
             {
                 if (userName[i] == userNameInput && userPassword[i] == userPasswordInput)
@@ -125,7 +121,7 @@
         static void ShowBooks()
         {
             Console.Clear();
-            Console.WriteLine("Vi har dessa böcker att låna idag: ");
+            Console.WriteLine("Vi har dessa böcker att låna ut idag: ");
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
@@ -159,6 +155,8 @@
                     {
                         userLoan[currentUser, i] = choice;
                         Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
+                        Console.WriteLine("Klicka Enter för att fortsätt: ");
+                        Console.ReadKey();
                         break;
                     }
                 }
