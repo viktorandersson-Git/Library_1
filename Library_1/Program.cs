@@ -161,7 +161,6 @@
             else
             {
                 Console.Clear();
-                // Takes away one example of title . 
              
 
                 // Finding an free space on the user to put the borrowed book. 
@@ -174,6 +173,7 @@
                         Console.WriteLine();
                         Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
                         Console.ReadKey();
+                        // Takes away one example of title . 
                         nrTitles[choice - 1]--;
                         break;
                     }
