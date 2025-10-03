@@ -7,6 +7,7 @@
         static string[] titles = ["Harry potter och de vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
         static int[] nrTitles = [3, 2, 4, 0, 1];
         static int[,] userLoan = new int[5, 5];
+        // -1 represents that no one is logged in.
         static int currentUser = -1;
         static void Main(string[] args)
         {
@@ -32,21 +33,20 @@
             Console.WriteLine("Klicka enter för att logga in: ");
             Console.ReadKey();
             Console.Clear();
-            Console.WriteLine("Ange användarnamn och lösenord: ");
-            Console.WriteLine("_______________________________:");
-            Console.WriteLine();
         }
 
         static int Login(string userNameInput, string userPasswordInput)
         {
             for (int i = 0; i < userName.Length; i++)
-            {
+            {   // Checking so the username and the password are matching 
                 if (userName[i] == userNameInput && userPassword[i] == userPasswordInput)
                 {
+                    // Determents the user who are logged in.
                     currentUser = i;
                     return i;
                 }
             }
+            // No one is logged in
             return -1;
         }
 
@@ -56,7 +56,10 @@
             bool correctLogin = false;
             string userNameInput;
             string userPasswordInput;
-            
+
+            Console.WriteLine("Ange användarnamn och lösenord: ");
+            Console.WriteLine("_______________________________:");
+            Console.WriteLine();
             while (!correctLogin && logCount < 3)
             {
                 Console.WriteLine("Användarnamn: ");
@@ -117,6 +120,7 @@
                     break;
                 case 5:
                     currentUser = -1;
+                    Console.Clear();
                     Logattampts();
                     break;
             }
@@ -189,8 +193,10 @@
                     Console.WriteLine($"{counter}: {titles[bookIndex - 1]}");
                     counter++;
                 }
+
             }
-            Console.ReadKey();
+            
+                Console.ReadKey();
         }
     }
 }
