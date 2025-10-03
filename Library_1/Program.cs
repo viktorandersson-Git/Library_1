@@ -102,6 +102,9 @@
             {
                 case 1:
                     ShowBooks();
+                    Console.WriteLine();
+                    Console.WriteLine("Klicka enter för att fortsätta: ");
+                    Console.ReadKey();
                     break;
                 case 2:
                     BorrowBook();
@@ -127,16 +130,13 @@
             {
                 Console.WriteLine($"{i + 1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
             }
-            Console.WriteLine();
-            Console.WriteLine("Klicka enter för att fortsätta: ");
-            Console.ReadKey();
         }
         static int BorrowBook()
         {
             int choice;
             Console.WriteLine("Låna bok");
             Console.WriteLine("________");
-            Console.WriteLine("");
+            Console.WriteLine();
             ShowBooks();
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du velat låna?");
@@ -146,6 +146,7 @@
             }
             if (nrTitles[choice - 1] == 0)
             {
+                Console.Clear();
                 Console.WriteLine($"{titles[choice - 1]} har inga exemplar att låna ut just nu. ");
                 Console.WriteLine("_______________________________________________________________________");
                 Console.WriteLine();
