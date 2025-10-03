@@ -186,14 +186,12 @@
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
-
                 int bookIndex = userLoan[currentUser, i];
                 if (bookIndex != 0)
                 {
                     Console.WriteLine($"{counter}: {titles[bookIndex - 1]}");
                     counter++;
                 }
-
             }
             
                 Console.ReadKey();
