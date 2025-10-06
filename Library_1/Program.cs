@@ -11,14 +11,18 @@
         static int currentUser = -1;
         static void Main(string[] args)
         {
+            RunProgram();
+        }
+        static void RunProgram()
+        {
             Welcome();
 
             bool runProgram = Logattampts();
-            if (!runProgram)
+            if (currentUser == -1)
             {
                 return;
             }
-            while (runProgram)
+            while (currentUser!=-1)
             {
                 Menu();
             }
@@ -121,7 +125,7 @@
                 case 5:
                     currentUser = -1;
                     Console.Clear();
-                    Logattampts();
+                    RunProgram();
                     break;
             }
         }
