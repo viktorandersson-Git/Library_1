@@ -11,14 +11,18 @@
         static int currentUser = -1;
         static void Main(string[] args)
         {
+            RunProgram();
+        }
+        static void RunProgram()
+        {
             Welcome();
 
-            bool runProgram = Logattampts();
-            if (!runProgram)
+            Logattampts();
+            if (currentUser == -1)
             {
                 return;
             }
-            while (runProgram)
+            while (currentUser!=-1)
             {
                 Menu();
             }
@@ -50,7 +54,7 @@
             return -1;
         }
 
-        static bool Logattampts()
+        static void Logattampts()
         {
             int logCount = 0;
             bool correctLogin = false;
@@ -81,7 +85,7 @@
                     logCount++;
                 }
             }
-            return correctLogin;
+            
         }
         static void Menu()
         {
@@ -121,7 +125,7 @@
                 case 5:
                     currentUser = -1;
                     Console.Clear();
-                    Logattampts();
+                    RunProgram();
                     break;
             }
         }
@@ -132,7 +136,7 @@
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
-                Console.WriteLine($"{i + 1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
+                Console.WriteLine($"{i + 1}: Titel :{titles[i]}: Exemplar: {nrTitles[i]}");
             }
         }
         static void BorrowBook()
@@ -170,6 +174,7 @@
                     {
                         userLoan[currentUser, i] = choice;
                         Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
+                        Console.WriteLine("___________________________________________");
                         Console.WriteLine();
                         Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
                         Console.ReadKey();
@@ -185,6 +190,9 @@
         {
             Console.Clear();
             int counter = 1;
+            Console.WriteLine("Du har lånat: ");
+            Console.WriteLine("_______________________________");
+            Console.WriteLine();
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
                 int bookIndex = userLoan[currentUser, i];
