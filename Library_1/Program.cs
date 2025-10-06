@@ -136,7 +136,7 @@
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
-                Console.WriteLine($"{i + 1}: Titel :{titles[i]}, Exemplar {nrTitles[i]}");
+                Console.WriteLine($"{i + 1}: Titel :{titles[i]}: Exemplar: {nrTitles[i]}");
             }
         }
         static void BorrowBook()
