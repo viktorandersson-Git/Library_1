@@ -17,7 +17,7 @@
         {
             Welcome();
 
-            bool runProgram = Logattampts();
+            Logattampts();
             if (currentUser == -1)
             {
                 return;
@@ -54,7 +54,7 @@
             return -1;
         }
 
-        static bool Logattampts()
+        static void Logattampts()
         {
             int logCount = 0;
             bool correctLogin = false;
@@ -85,7 +85,7 @@
                     logCount++;
                 }
             }
-            return correctLogin;
+            
         }
         static void Menu()
         {
@@ -174,6 +174,7 @@
                     {
                         userLoan[currentUser, i] = choice;
                         Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
+                        Console.WriteLine("___________________________________________");
                         Console.WriteLine();
                         Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
                         Console.ReadKey();
@@ -189,6 +190,9 @@
         {
             Console.Clear();
             int counter = 1;
+            Console.WriteLine("Du har lånat: ");
+            Console.WriteLine("_______________________________");
+            Console.WriteLine();
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
                 int bookIndex = userLoan[currentUser, i];
