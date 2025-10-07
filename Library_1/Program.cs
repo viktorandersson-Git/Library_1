@@ -87,6 +87,16 @@
             }
             
         }
+
+        static int GetUserNumber()
+        {
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5)
+            {
+                Console.WriteLine("Du måste välja mellan valen 1 till 5");
+            }
+            return choice;
+        }
         static void Menu()
         {
             int choice;
@@ -100,10 +110,8 @@
             Console.WriteLine("3: Lämna tillbaka böcker.");
             Console.WriteLine("4: Mina lån.");
             Console.WriteLine("5: Logga ut.");
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 5)
-            {
-                Console.WriteLine("Du måste välja mellan valen 1 till 5");
-            }
+
+            choice=GetUserNumber();
 
             switch (choice)
             {
