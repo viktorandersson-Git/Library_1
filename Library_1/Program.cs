@@ -203,12 +203,13 @@ namespace Library_1
             Console.Write("Ditt val: ");
             int choice=GetUserNumber();
             Console.WriteLine();
-
+            int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
                 if (userLoan[currentUser, choice] == i)
                 {
                     int bookindex = userLoan[currentUser, i];
+                    if ()
                     userLoan[currentUser, i] = 0;
                     NumberOfTitles[bookindex - 1]++;
                     Console.WriteLine($"Du har lämnat tillbaka {titles[bookindex-1]}. ");
