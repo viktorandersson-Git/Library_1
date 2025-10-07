@@ -24,7 +24,7 @@ namespace Library_1
             {
                 return;
             }
-            while (currentUser!=-1)
+            while (currentUser != -1)
             {
                 Menu();
             }
@@ -87,7 +87,7 @@ namespace Library_1
                     logCount++;
                 }
             }
-            
+
         }
 
         static int GetUserNumber()
@@ -113,7 +113,7 @@ namespace Library_1
             Console.WriteLine("4: Mina lån.");
             Console.WriteLine("5: Logga ut.");
 
-            choice=GetUserNumber();
+            choice = GetUserNumber();
 
             switch (choice)
             {
@@ -172,7 +172,7 @@ namespace Library_1
             else
             {
                 Console.Clear();
-             
+
 
                 // Finding an free space on the user to put the borrowed book. 
                 for (int i = 0; i < userLoan.GetLength(1); i++)
@@ -201,22 +201,31 @@ namespace Library_1
             Console.WriteLine("________________________________________________________________________");
             Console.WriteLine("");
             Console.Write("Ditt val: ");
-            int choice=GetUserNumber();
+            int choice = GetUserNumber();
             Console.WriteLine();
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
-                if (userLoan[currentUser, choice] == i)
+
+                int bookindex = userLoan[currentUser, i];
+                if (bookindex != 0)
                 {
-                    int bookindex = userLoan[currentUser, i];
-                    if ()
-                    userLoan[currentUser, i] = 0;
-                    NumberOfTitles[bookindex - 1]++;
-                    Console.WriteLine($"Du har lämnat tillbaka {titles[bookindex-1]}. ");
+                    if (counter == choice)
+                    {
+                        userLoan[currentUser, i] = 0;
+                        NumberOfTitles[bookindex - 1]++;
+                        Console.Clear();
+                        Console.WriteLine($"Du har lämnat tillbaka {titles[bookindex - 1]}. ");
+                        Console.WriteLine("_______________________________________________________");
+                        Console.WriteLine();
+                        Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
+                        Console.ReadKey();
+                        return;
+                    }
                 }
+                counter++;
             }
-            Console.WriteLine();
-            Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
+            Console.WriteLine("Fel val - Du har inte den boken.");
             Console.ReadKey();
 
         }
@@ -244,4 +253,4 @@ namespace Library_1
     }
 }
 
-        
+
