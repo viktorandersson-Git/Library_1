@@ -195,7 +195,10 @@ namespace Library_1
 
         static void ReturnBook()
         {
-            UsersBooks();
+            if (!UsersBooks())
+            {
+                return;
+            }
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du viljat lämna tillbaka? Svara med siffrorna 1-5: ");
             Console.WriteLine("________________________________________________________________________");
@@ -225,15 +228,16 @@ namespace Library_1
                 }
                 counter++;
             }
-            Console.WriteLine("Fel val - Du har inte den boken.");
+            Console.WriteLine("Fel val - Du har ingen bok på den platsen.");
             Console.ReadKey();
 
         }
 
-        static void UsersBooks()
+        static bool UsersBooks()
         {
             Console.Clear();
             int counter = 1;
+            bool loans = false;
             Console.WriteLine("Du har lånat: ");
             Console.WriteLine("_______________________________");
             Console.WriteLine();
@@ -244,11 +248,23 @@ namespace Library_1
                 {
                     Console.WriteLine($"{counter}: {titles[bookIndex - 1]}");
                     counter++;
+                    loans = true;
                 }
             }
+            if (!loans)
+            {
+                Console.WriteLine("Du har inga lånade böcker!");
+                Console.WriteLine();
+                Console.WriteLine("Klicka \"Enter\" för att fortsätta");
+                Console.ReadKey();
+                return false;
+            }
+              
             Console.WriteLine();
             Console.WriteLine("\"Enter\" för att fortsätta: ");
             Console.ReadKey();
+            return true;
+
         }
     }
 }
