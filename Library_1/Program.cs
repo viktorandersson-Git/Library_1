@@ -34,7 +34,7 @@
             Console.WriteLine("Välkommen till ditt biblotek!");
             Console.WriteLine("_____________________________");
             Console.WriteLine();
-            Console.WriteLine("Klicka enter för att logga in: ");
+            Console.WriteLine("Klicka \"Enter\" för att logga in: ");
             Console.ReadKey();
             Console.Clear();
         }
@@ -118,7 +118,7 @@
                 case 1:
                     ShowBooks();
                     Console.WriteLine();
-                    Console.WriteLine("Klicka enter för att fortsätta: ");
+                    Console.WriteLine("Klicka \"Enter\" för att fortsätta: ");
                     Console.ReadKey();
                     break;
                 case 2:
@@ -164,7 +164,7 @@
                 Console.WriteLine($"{titles[choice - 1]} har inga exemplar att låna ut just nu. ");
                 Console.WriteLine("_______________________________________________________________________");
                 Console.WriteLine();
-                Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
+                Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
                 Console.ReadKey();
             }
             else
@@ -181,7 +181,7 @@
                         Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
                         Console.WriteLine("___________________________________________");
                         Console.WriteLine();
-                        Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
+                        Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
                         Console.ReadKey();
                         // Takes away one example of title . 
                         NumberOfTitles[choice - 1]--;
@@ -207,8 +207,8 @@
                     counter++;
                 }
             }
-            
-                Console.ReadKey();
+            Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
+            Console.ReadKey();
         }
     }
 }
