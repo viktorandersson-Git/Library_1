@@ -1,4 +1,6 @@
-﻿namespace Library_1
+﻿using System.Transactions;
+
+namespace Library_1
 {
     internal class Program
     {
@@ -22,7 +24,7 @@
             {
                 return;
             }
-            while (currentUser!=-1)
+            while (currentUser != -1)
             {
                 Menu();
             }
@@ -85,7 +87,7 @@
                     logCount++;
                 }
             }
-            
+
         }
 
         static int GetUserNumber()
@@ -111,21 +113,21 @@
             Console.WriteLine("4: Mina lån.");
             Console.WriteLine("5: Logga ut.");
 
-            choice=GetUserNumber();
+            choice = GetUserNumber();
 
             switch (choice)
             {
                 case 1:
                     ShowBooks();
                     Console.WriteLine();
-                    Console.WriteLine("Klicka \"Enter\" för att fortsätta: ");
+                    Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
                     Console.ReadKey();
                     break;
                 case 2:
                     BorrowBook();
                     break;
                 case 3:
-                    //Lämna till bok
+                    ReturnBook();
                     break;
                 case 4:
                     UsersBooks();
@@ -170,7 +172,7 @@
             else
             {
                 Console.Clear();
-             
+
 
                 // Finding an free space on the user to put the borrowed book. 
                 for (int i = 0; i < userLoan.GetLength(1); i++)
@@ -191,10 +193,51 @@
             }
         }
 
-        static void UsersBooks()
+        static void ReturnBook()
+        {
+            if (!UsersBooks())
+            {
+                return;
+            }
+            Console.WriteLine();
+            Console.WriteLine("Vilken bok hade du viljat lämna tillbaka? Svara med siffrorna 1-5: ");
+            Console.WriteLine("________________________________________________________________________");
+            Console.WriteLine("");
+            Console.Write("Ditt val: ");
+            int choice = GetUserNumber();
+            Console.WriteLine();
+            int counter = 1;
+            for (int i = 0; i < userLoan.GetLength(1); i++)
+            {
+
+                int bookindex = userLoan[currentUser, i];
+                if (bookindex != 0)
+                {
+                    if (counter == choice)
+                    {
+                        userLoan[currentUser, i] = 0;
+                        NumberOfTitles[bookindex - 1]++;
+                        Console.Clear();
+                        Console.WriteLine($"Du har lämnat tillbaka {titles[bookindex - 1]}. ");
+                        Console.WriteLine("_______________________________________________________");
+                        Console.WriteLine();
+                        Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
+                        Console.ReadKey();
+                        return;
+                    }
+                }
+                counter++;
+            }
+            Console.WriteLine("Fel val - Du har ingen bok på den platsen.");
+            Console.ReadKey();
+
+        }
+
+        static bool UsersBooks()
         {
             Console.Clear();
             int counter = 1;
+            bool loans = false;
             Console.WriteLine("Du har lånat: ");
             Console.WriteLine("_______________________________");
             Console.WriteLine();
@@ -205,12 +248,25 @@
                 {
                     Console.WriteLine($"{counter}: {titles[bookIndex - 1]}");
                     counter++;
+                    loans = true;
                 }
             }
-            Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
+            if (!loans)
+            {
+                Console.WriteLine("Du har inga lånade böcker!");
+                Console.WriteLine();
+                Console.WriteLine("Klicka \"Enter\" för att fortsätta");
+                Console.ReadKey();
+                return false;
+            }
+              
+            Console.WriteLine();
+            Console.WriteLine("\"Enter\" för att fortsätta: ");
             Console.ReadKey();
+            return true;
+
         }
     }
 }
 
-        
+
