@@ -125,8 +125,6 @@ namespace Library_1
                     break;
                 case 2:
                     BorrowBook();
-                    Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
-                    Console.ReadKey();
                     break;
                 case 3:
                     ReturnBook();
@@ -201,7 +199,10 @@ namespace Library_1
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du viljat lämna tillbaka? Svara med siffrorna 1-5: ");
             Console.WriteLine("________________________________________________________________________");
+            Console.WriteLine("");
+            Console.Write("Ditt val: ");
             int choice=GetUserNumber();
+            Console.WriteLine();
 
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
@@ -235,6 +236,7 @@ namespace Library_1
                     counter++;
                 }
             }
+            Console.WriteLine();
             Console.WriteLine("\"Enter\" för att fortsätta: ");
             Console.ReadKey();
         }
