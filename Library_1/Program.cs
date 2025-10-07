@@ -118,11 +118,13 @@
                 case 1:
                     ShowBooks();
                     Console.WriteLine();
-                    Console.WriteLine("Klicka \"Enter\" för att fortsätta: ");
+                    Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
                     Console.ReadKey();
                     break;
                 case 2:
                     BorrowBook();
+                    Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
+                    Console.ReadKey();
                     break;
                 case 3:
                     //Lämna till bok
@@ -191,6 +193,11 @@
             }
         }
 
+        static void ReturnBook()
+        {
+
+        }
+
         static void UsersBooks()
         {
             Console.Clear();
@@ -207,8 +214,7 @@
                     counter++;
                 }
             }
-            Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
-            Console.ReadKey();
+
         }
     }
 }
