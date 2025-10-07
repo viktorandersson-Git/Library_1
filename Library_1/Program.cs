@@ -210,11 +210,12 @@ namespace Library_1
                     int bookindex = userLoan[currentUser, i];
                     userLoan[currentUser, i] = 0;
                     NumberOfTitles[bookindex - 1]++;
+                    Console.WriteLine($"Du har lämnat tillbaka {titles[bookindex-1]}. ");
                 }
             }
-            Console.WriteLine($"Du har lämnat tillbaka {titles[choice-1]}. ");
             Console.WriteLine();
             Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
+            Console.ReadKey();
 
         }
 
