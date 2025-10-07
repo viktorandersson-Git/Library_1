@@ -156,10 +156,7 @@
             ShowBooks();
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du velat låna?");
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 5)
-            {
-                Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
-            }
+            choice = GetUserNumber();
             // if the book has no examples left.
             if (NumberOfTitles[choice - 1] == 0)
             {
