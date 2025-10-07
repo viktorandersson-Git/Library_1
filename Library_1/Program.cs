@@ -195,6 +195,11 @@
 
         static void ReturnBook()
         {
+            UsersBooks();
+            Console.WriteLine();
+            Console.WriteLine("Vilken bok hade du viljat lämna tillbaka? Svara med siffrorna 1-5: ");
+            GetUserNumber();
+
 
         }
 
