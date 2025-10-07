@@ -234,7 +234,8 @@ namespace Library_1
                     counter++;
                 }
             }
-
+            Console.WriteLine("\"Enter\" för att fortsätta: ");
+            Console.ReadKey();
         }
     }
 }
