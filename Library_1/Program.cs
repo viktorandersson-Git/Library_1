@@ -224,9 +224,9 @@ namespace Library_1
                         Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
                         Console.ReadKey();
                         return;
-                    }
+                    }counter++;
                 }
-                counter++;
+                
             }
             Console.WriteLine("Fel val - Du har ingen bok på den platsen.");
             Console.ReadKey();
