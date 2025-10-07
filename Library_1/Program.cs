@@ -5,7 +5,7 @@
         static string[] userName = ["Olivia", "Viktor", "Doris", "Nemo", "Egon"];
         static string[] userPassword = ["Olivia1", "Viktor1", "Doris1", "Nemo1", "Egon1"];
         static string[] titles = ["Harry potter och de vise sten", "The good guy", "The bad guy", "Eragon", "Hail Mary",];
-        static int[] nrTitles = [3, 2, 4, 0, 1];
+        static int[] NumberOfTitles = [3, 2, 4, 0, 1];
         static int[,] userLoan = new int[5, 5];
         // -1 represents that no one is logged in.
         static int currentUser = -1;
@@ -136,7 +136,7 @@
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
-                Console.WriteLine($"{i + 1}: Titel :{titles[i]}: Exemplar: {nrTitles[i]}");
+                Console.WriteLine($"{i + 1}: Titel :{titles[i]}: Exemplar: {NumberOfTitles[i]}");
             }
         }
         static void BorrowBook()
@@ -153,7 +153,7 @@
                 Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
             }
             // if the book has no examples left.
-            if (nrTitles[choice - 1] == 0)
+            if (NumberOfTitles[choice - 1] == 0)
             {
                 Console.Clear();
                 Console.WriteLine($"{titles[choice - 1]} har inga exemplar att låna ut just nu. ");
@@ -179,7 +179,7 @@
                         Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
                         Console.ReadKey();
                         // Takes away one example of title . 
-                        nrTitles[choice - 1]--;
+                        NumberOfTitles[choice - 1]--;
                         break;
                     }
                 }
