@@ -1,4 +1,6 @@
-﻿namespace Library_1
+﻿using System.Transactions;
+
+namespace Library_1
 {
     internal class Program
     {
@@ -127,7 +129,7 @@
                     Console.ReadKey();
                     break;
                 case 3:
-                    //Lämna till bok
+                    ReturnBook();
                     break;
                 case 4:
                     UsersBooks();
@@ -198,8 +200,21 @@
             UsersBooks();
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du viljat lämna tillbaka? Svara med siffrorna 1-5: ");
-            GetUserNumber();
+            Console.WriteLine("________________________________________________________________________");
+            int choice=GetUserNumber();
 
+            for (int i = 0; i < userLoan.GetLength(1); i++)
+            {
+                if (userLoan[currentUser, choice] == i)
+                {
+                    int bookindex = userLoan[currentUser, i];
+                    userLoan[currentUser, i] = 0;
+                    NumberOfTitles[bookindex - 1]++;
+                }
+            }
+            Console.WriteLine($"Du har lämnat tillbaka {titles[choice-1]}. ");
+            Console.WriteLine();
+            Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
 
         }
 
