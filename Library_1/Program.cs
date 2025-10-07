@@ -34,7 +34,7 @@
             Console.WriteLine("Välkommen till ditt biblotek!");
             Console.WriteLine("_____________________________");
             Console.WriteLine();
-            Console.WriteLine("Klicka enter för att logga in: ");
+            Console.WriteLine("Klicka \"Enter\" för att logga in: ");
             Console.ReadKey();
             Console.Clear();
         }
@@ -87,6 +87,16 @@
             }
             
         }
+
+        static int GetUserNumber()
+        {
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5)
+            {
+                Console.WriteLine("Du måste välja mellan valen 1 till 5");
+            }
+            return choice;
+        }
         static void Menu()
         {
             int choice;
@@ -100,17 +110,15 @@
             Console.WriteLine("3: Lämna tillbaka böcker.");
             Console.WriteLine("4: Mina lån.");
             Console.WriteLine("5: Logga ut.");
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 5)
-            {
-                Console.WriteLine("Du måste välja mellan valen 1 till 5");
-            }
+
+            choice=GetUserNumber();
 
             switch (choice)
             {
                 case 1:
                     ShowBooks();
                     Console.WriteLine();
-                    Console.WriteLine("Klicka enter för att fortsätta: ");
+                    Console.WriteLine("Klicka \"Enter\" för att fortsätta: ");
                     Console.ReadKey();
                     break;
                 case 2:
@@ -148,10 +156,7 @@
             ShowBooks();
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du velat låna?");
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 5)
-            {
-                Console.WriteLine("Du måste välja med hjälp av siffrorna 1-5");
-            }
+            choice = GetUserNumber();
             // if the book has no examples left.
             if (NumberOfTitles[choice - 1] == 0)
             {
@@ -159,7 +164,7 @@
                 Console.WriteLine($"{titles[choice - 1]} har inga exemplar att låna ut just nu. ");
                 Console.WriteLine("_______________________________________________________________________");
                 Console.WriteLine();
-                Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
+                Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
                 Console.ReadKey();
             }
             else
@@ -176,7 +181,7 @@
                         Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
                         Console.WriteLine("___________________________________________");
                         Console.WriteLine();
-                        Console.WriteLine("Klicka Enter för att komma tillbaka till menyn: ");
+                        Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
                         Console.ReadKey();
                         // Takes away one example of title . 
                         NumberOfTitles[choice - 1]--;
@@ -202,8 +207,8 @@
                     counter++;
                 }
             }
-            
-                Console.ReadKey();
+            Console.WriteLine("Klicka \"Enter\" för att komma till menyn.");
+            Console.ReadKey();
         }
     }
 }
