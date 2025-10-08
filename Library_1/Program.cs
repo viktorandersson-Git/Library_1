@@ -239,8 +239,7 @@ namespace Library_1
                 }
                 
             }
-            Console.WriteLine("Fel val - Du har ingen bok på den platsen.");
-            Console.ReadKey();
+           
 
         }
 
