@@ -90,12 +90,12 @@ namespace Library_1
 
         }
 
-        static int GetUserNumber()
+        static int GetUserNumber(int min, int max)
         {
             int choice;
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 5)
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < min || choice > max)
             {
-                Console.WriteLine("Du måste välja mellan valen 1 till 5");
+                Console.WriteLine($"Du måste välja mellan valen {min} till {max}");
             }
             return choice;
         }
@@ -116,7 +116,7 @@ namespace Library_1
             Console.WriteLine("4: Mina lån.");
             Console.WriteLine("5: Logga ut.");
 
-            choice = GetUserNumber();
+            choice = GetUserNumber(1,5);
 
             switch (choice)
             {
@@ -161,7 +161,7 @@ namespace Library_1
             ShowBooks();
             Console.WriteLine();
             Console.WriteLine("Vilken bok hade du velat låna?");
-            choice = GetUserNumber();
+            choice = GetUserNumber(1,titles.Length);
             // if the book has no examples left.
             if (NumberOfTitles[choice - 1] == 0)
             {
@@ -207,7 +207,7 @@ namespace Library_1
             Console.WriteLine("________________________________________________________________________");
             Console.WriteLine("");
             Console.Write("Ditt val: ");
-            int choice = GetUserNumber();
+            int choice = GetUserNumber(1, userLoan.GetLength(1));
             Console.WriteLine();
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
