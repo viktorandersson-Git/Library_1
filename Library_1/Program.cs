@@ -154,7 +154,9 @@ namespace Library_1
         }
         static void BorrowBook()
         {
+            //int borrowBookLimit = 0;
             int choice;
+            //while (borrowBookLimit != 5)
             Console.WriteLine("Låna bok");
             Console.WriteLine("________");
             Console.WriteLine();
