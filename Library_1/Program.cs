@@ -176,7 +176,6 @@ namespace Library_1
             {
                 Console.Clear();
 
-
                 // Finding an free space on the user to put the borrowed book. 
                 for (int i = 0; i < userLoan.GetLength(1); i++)
                 {
@@ -207,7 +206,15 @@ namespace Library_1
             Console.WriteLine("________________________________________________________________________");
             Console.WriteLine("");
             Console.Write("Ditt val: ");
-            int choice = GetUserNumber(1, userLoan.GetLength(1));
+            int borrowcount = 0;
+            for (int i = 0; i < userLoan.GetLength(1); i++)
+            {
+                if(userLoan[currentUser, i] > 0)
+                {
+                    borrowcount++;
+                }
+            }
+            int choice = GetUserNumber(1, borrowcount);
             Console.WriteLine();
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
@@ -232,8 +239,7 @@ namespace Library_1
                 }
                 
             }
-            Console.WriteLine("Fel val - Du har ingen bok på den platsen.");
-            Console.ReadKey();
+           
 
         }
 
