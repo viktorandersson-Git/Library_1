@@ -214,7 +214,7 @@ namespace Library_1
                     borrowcount++;
                 }
             }
-                int choice = GetUserNumber(1, borrowcount);
+            int choice = GetUserNumber(1, borrowcount);
             Console.WriteLine();
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
