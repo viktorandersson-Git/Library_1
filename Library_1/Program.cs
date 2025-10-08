@@ -103,8 +103,11 @@ namespace Library_1
         {
             int choice;
             Console.Clear();
-            Console.WriteLine("Bibloteks meny");
-            Console.WriteLine("_______________");
+            Console.WriteLine("\t\tBibloteks meny");
+            Console.WriteLine("\t___________________________");
+            Console.WriteLine();
+            Console.WriteLine($"\t\tInloggad: {userName[currentUser]}");
+            Console.WriteLine();
             Console.WriteLine("Du får nu 5 valmöjligheter. Välj med siffrorna 1 till 5");
             Console.WriteLine();
             Console.WriteLine("1: Visa böcker.");
@@ -224,7 +227,8 @@ namespace Library_1
                         Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
                         Console.ReadKey();
                         return;
-                    }counter++;
+                    }
+                    counter++;
                 }
                 
             }
