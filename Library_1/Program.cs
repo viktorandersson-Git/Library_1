@@ -33,7 +33,7 @@ namespace Library_1
 
         static void Welcome()
         {
-            Console.WriteLine("Välkommen till ditt biblotek!");
+            Console.WriteLine("Välkommen till ditt bibliotek!");
             Console.WriteLine("_____________________________");
             Console.WriteLine();
             Console.WriteLine("Klicka \"Enter\" för att logga in: ");
@@ -93,6 +93,9 @@ namespace Library_1
         static int GetUserNumber(int min, int max)
         {
             int choice;
+            Console.WriteLine();
+            Console.Write("Ditt val: ");
+            
             while (!int.TryParse(Console.ReadLine(), out choice) || choice < min || choice > max)
             {
                 Console.WriteLine($"Du måste välja mellan valen {min} till {max}");
@@ -103,10 +106,10 @@ namespace Library_1
         {
             int choice;
             Console.Clear();
-            Console.WriteLine("\t\tBibloteks meny");
-            Console.WriteLine("\t___________________________");
+            Console.WriteLine("\tBibloteks meny");
+            Console.WriteLine("\t______________");
             Console.WriteLine();
-            Console.WriteLine($"\t\tInloggad: {userName[currentUser]}");
+            Console.WriteLine($"\tInloggad: {userName[currentUser]}");
             Console.WriteLine();
             Console.WriteLine("Du får nu 5 valmöjligheter. Välj med siffrorna 1 till 5");
             Console.WriteLine();
@@ -116,6 +119,7 @@ namespace Library_1
             Console.WriteLine("4: Mina lån.");
             Console.WriteLine("5: Logga ut.");
 
+            
             choice = GetUserNumber(1, 5);
 
             switch (choice)
@@ -170,6 +174,7 @@ namespace Library_1
                 ShowBooks();
                 Console.WriteLine();
                 Console.WriteLine("Vilken bok hade du velat låna?");
+                
                 int choice = GetUserNumber(1, titles.Length);
                 // if the book has no examples left.
                 if (NumberOfTitles[choice - 1] == 0)
@@ -222,7 +227,7 @@ namespace Library_1
             Console.WriteLine("Vilken bok hade du viljat lämna tillbaka? Svara med siffrorna 1-5: ");
             Console.WriteLine("________________________________________________________________________");
             Console.WriteLine("");
-            Console.Write("Ditt val: ");
+            
             int borrowBookCount = BorrowBookCount();
 
             int choice = GetUserNumber(1, borrowBookCount);
