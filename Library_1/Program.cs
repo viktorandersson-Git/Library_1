@@ -116,7 +116,7 @@ namespace Library_1
             Console.WriteLine("4: Mina lån.");
             Console.WriteLine("5: Logga ut.");
 
-            choice = GetUserNumber(1,5);
+            choice = GetUserNumber(1, 5);
 
             switch (choice)
             {
@@ -154,47 +154,59 @@ namespace Library_1
         }
         static void BorrowBook()
         {
-            //int borrowBookLimit = 0;
-            int choice;
-            //while (borrowBookLimit != 5)
-            Console.WriteLine("Låna bok");
-            Console.WriteLine("________");
-            Console.WriteLine();
-            ShowBooks();
-            Console.WriteLine();
-            Console.WriteLine("Vilken bok hade du velat låna?");
-            choice = GetUserNumber(1,titles.Length);
-            // if the book has no examples left.
-            if (NumberOfTitles[choice - 1] == 0)
+            int bookCount = BorrowBookCount();
+            while (bookCount != 5)
             {
-                Console.Clear();
-                Console.WriteLine($"{titles[choice - 1]} har inga exemplar att låna ut just nu. ");
-                Console.WriteLine("_______________________________________________________________________");
-                Console.WriteLine();
-                Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
-                Console.ReadKey();
-            }
-            else
-            {
-                Console.Clear();
 
-                // Finding an free space on the user to put the borrowed book. 
-                for (int i = 0; i < userLoan.GetLength(1); i++)
+                //int borrowBookLimit = 0;
+
+                //while (borrowBookLimit != 5)
+                Console.WriteLine("Låna bok");
+                Console.WriteLine("________");
+                Console.WriteLine();
+                ShowBooks();
+                Console.WriteLine();
+                Console.WriteLine("Vilken bok hade du velat låna?");
+                int choice = GetUserNumber(1, titles.Length);
+                // if the book has no examples left.
+                if (NumberOfTitles[choice - 1] == 0)
                 {
-                    if (userLoan[currentUser, i] == 0)
+                    Console.Clear();
+                    Console.WriteLine($"{titles[choice - 1]} har inga exemplar att låna ut just nu. ");
+                    Console.WriteLine("_______________________________________________________________________");
+                    Console.WriteLine();
+                    Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    Console.Clear();
+
+                    // Finding an free space on the user to put the borrowed book. 
+                    for (int i = 0; i < userLoan.GetLength(1); i++)
                     {
-                        userLoan[currentUser, i] = choice;
-                        Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
-                        Console.WriteLine("___________________________________________");
-                        Console.WriteLine();
-                        Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
-                        Console.ReadKey();
-                        // Takes away one example of title . 
-                        NumberOfTitles[choice - 1]--;
-                        break;
+                        if (userLoan[currentUser, i] == 0)
+                        {
+                            userLoan[currentUser, i] = choice;
+                            Console.WriteLine($"Du har nu lånat: {titles[choice - 1]}");
+                            Console.WriteLine("___________________________________________");
+                            Console.WriteLine();
+                            Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
+                            Console.ReadKey();
+                            // Takes away one example of title . 
+                            NumberOfTitles[choice - 1]--;
+                            break;
+                        }
                     }
+                    return;
                 }
             }
+            Console.Clear();
+            Console.WriteLine("Du har lånat upp till ditt maxtak: 5 böcker");
+            Console.WriteLine("Du måste lämna tillbaka en bok för att få låna mer. ");
+            Console.WriteLine("");
+            Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
+            Console.ReadKey();
         }
 
         static void ReturnBook()
@@ -208,15 +220,9 @@ namespace Library_1
             Console.WriteLine("________________________________________________________________________");
             Console.WriteLine("");
             Console.Write("Ditt val: ");
-            int borrowcount = 0;
-            for (int i = 0; i < userLoan.GetLength(1); i++)
-            {
-                if(userLoan[currentUser, i] > 0)
-                {
-                    borrowcount++;
-                }
-            }
-            int choice = GetUserNumber(1, borrowcount);
+            int borrowBookCount = BorrowBookCount();
+
+            int choice = GetUserNumber(1, borrowBookCount);
             Console.WriteLine();
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
@@ -239,10 +245,7 @@ namespace Library_1
                     }
                     counter++;
                 }
-                
             }
-           
-
         }
 
         static bool UsersBooks()
@@ -271,12 +274,23 @@ namespace Library_1
                 Console.ReadKey();
                 return false;
             }
-              
+
             Console.WriteLine();
             Console.WriteLine("\"Enter\" för att fortsätta: ");
             Console.ReadKey();
             return true;
-
+        }
+        static int BorrowBookCount()
+        {
+            int borrowCount = 0;
+            for (int i = 0; i < userLoan.GetLength(1); i++)
+            {
+                if (userLoan[currentUser, i] > 0)
+                {
+                    borrowCount++;
+                }
+            }
+            return borrowCount;
         }
     }
 }
