@@ -66,6 +66,7 @@ namespace Library_1
             Console.WriteLine("Ange användarnamn och lösenord: ");
             Console.WriteLine("_______________________________:");
             Console.WriteLine();
+            // You have 3 tries to log in.
             while (!correctLogin && logCount < 3)
             {
                 Console.WriteLine("Användarnamn: ");
@@ -154,6 +155,7 @@ namespace Library_1
             Console.Clear();
             Console.WriteLine("Vi har dessa böcker att låna ut idag: ");
             Console.WriteLine("__________________________________");
+            // List of all the books that are available
             for (int i = 0; i < titles.Length; i++)
             {
                 Console.WriteLine($"{i + 1}: Titel:{titles[i]}: Exemplar: {NumberOfTitles[i]}");
@@ -161,13 +163,10 @@ namespace Library_1
         }
         static void BorrowBook()
         {
+            //Makes sure that you dont go over 5 books in your inventory.
             int bookCount = BorrowBookCount();
             while (bookCount != 5)
             {
-
-                //int borrowBookLimit = 0;
-
-                //while (borrowBookLimit != 5)
                 Console.WriteLine("Låna bok");
                 Console.WriteLine("________");
                 Console.WriteLine();
@@ -201,7 +200,7 @@ namespace Library_1
                             Console.WriteLine();
                             Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
                             Console.ReadKey();
-                            // Takes away one example of title . 
+                            // Takes away one example of the title . 
                             NumberOfTitles[choice - 1]--;
                             break;
                         }
@@ -209,6 +208,7 @@ namespace Library_1
                     return;
                 }
             }
+            // If you have borrowed 5 book already
             Console.Clear();
             Console.WriteLine("Du har lånat upp till ditt maxtak: 5 böcker");
             Console.WriteLine("Du måste lämna tillbaka en bok för att få låna mer. ");
@@ -219,6 +219,7 @@ namespace Library_1
 
         static void ReturnBook()
         {
+            // Checks if the user have any borrowed books
             if (!UsersBooks())
             {
                 return;
@@ -228,23 +229,25 @@ namespace Library_1
             Console.WriteLine("________________________________________________________________________");
             Console.WriteLine("");
             
+            // Tracks how many books the user have
             int borrowBookCount = BorrowBookCount();
 
             int choice = GetUserNumber(1, borrowBookCount);
             Console.WriteLine();
+            //counter are used for matching user (choice) with the right book in the array
             int counter = 1;
             for (int i = 0; i < userLoan.GetLength(1); i++)
-            {
-
-                int bookindex = userLoan[currentUser, i];
-                if (bookindex != 0)
+            {   //bookIndex are for the books and i is for the place the books are in.
+                int bookIndex = userLoan[currentUser, i];
+                if (bookIndex != 0)
                 {
                     if (counter == choice)
                     {
+                        //Replace the space of the userLoan array with 0 and ++ the number of titles. 
                         userLoan[currentUser, i] = 0;
-                        NumberOfTitles[bookindex - 1]++;
+                        NumberOfTitles[bookIndex - 1]++;
                         Console.Clear();
-                        Console.WriteLine($"Du har lämnat tillbaka {titles[bookindex - 1]}. ");
+                        Console.WriteLine($"Du har lämnat tillbaka {titles[bookIndex - 1]}. ");
                         Console.WriteLine("_______________________________________________________");
                         Console.WriteLine();
                         Console.WriteLine("Klicka \"Enter\" för att komma tillbaka till menyn: ");
@@ -260,6 +263,7 @@ namespace Library_1
         {
             Console.Clear();
             int counter = 1;
+            //(loans) checks if the user has any borrowed books. 
             bool loans = false;
             Console.WriteLine("Du har lånat: ");
             Console.WriteLine("_______________________________");
@@ -280,12 +284,16 @@ namespace Library_1
                 Console.WriteLine();
                 Console.WriteLine("Klicka \"Enter\" för att fortsätta");
                 Console.ReadKey();
+                //Make sure that the user comes back to menu. 
                 return false;
             }
             return true;
         }
+
+        
         static int BorrowBookCount()
         {
+            
             int borrowCount = 0;
             for (int i = 0; i < userLoan.GetLength(1); i++)
             {
