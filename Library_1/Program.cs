@@ -134,6 +134,9 @@ namespace Library_1
                     break;
                 case 4:
                     UsersBooks();
+                    Console.WriteLine();
+                    Console.WriteLine("\"Enter\" för att fortsätta: ");
+                    Console.ReadKey();
                     break;
                 case 5:
                     currentUser = -1;
@@ -149,7 +152,7 @@ namespace Library_1
             Console.WriteLine("__________________________________");
             for (int i = 0; i < titles.Length; i++)
             {
-                Console.WriteLine($"{i + 1}: Titel :{titles[i]}: Exemplar: {NumberOfTitles[i]}");
+                Console.WriteLine($"{i + 1}: Titel:{titles[i]}: Exemplar: {NumberOfTitles[i]}");
             }
         }
         static void BorrowBook()
@@ -274,10 +277,6 @@ namespace Library_1
                 Console.ReadKey();
                 return false;
             }
-
-            Console.WriteLine();
-            Console.WriteLine("\"Enter\" för att fortsätta: ");
-            Console.ReadKey();
             return true;
         }
         static int BorrowBookCount()
